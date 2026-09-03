@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alessandro Pavesi — Luxury Watches &amp; Jewellery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF7F1;
+    --ivory-deep:#F2EDE3;
+    --ink:#211F1C;
+    --ink-soft:#5C574E;
+    --line:#DED6C4;
+    --gold:#A6875A;
+    --gold-soft:#C7B18A;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    padding:0 0 64px 0;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;}
+
+  .card{
+    width:100%;
+    max-width:440px;
+    background:var(--ivory);
+    position:relative;
+  }
+
+  /* ---------- Photo ---------- */
+  .photo-wrap{
+    width:100%;
+    aspect-ratio:4/5;
+    overflow:hidden;
+    position:relative;
+    background:var(--ivory-deep);
+  }
+  .photo-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 18%;
+    display:block;
+  }
+  .photo-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    box-shadow:inset 0 -70px 60px -40px rgba(20,18,14,0.35);
+    pointer-events:none;
+  }
+  .photo-caption{
+    position:absolute;
+    left:28px;
+    bottom:20px;
+    color:#F7F3EA;
+    z-index:2;
+  }
+  .photo-caption .name{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    font-size:2rem;
+    letter-spacing:0.02em;
+    line-height:1.05;
+  }
+  .photo-caption .role{
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:#E8E1D2;
+    margin-top:4px;
+  }
+
+  /* ---------- Body ---------- */
+  .body{
+    padding:30px 28px 8px;
+  }
+
+  .hairline{
+    height:1px;
+    background:var(--line);
+    width:100%;
+    margin:26px 0;
+  }
+
+  .section-label{
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+
+  /* Contact rows */
+  .contact-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .contact-row:active{
+    background:var(--ivory-deep);
+  }
+  .contact-row .icon{
+    flex:0 0 auto;
+    width:18px;height:18px;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-row .text{
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .contact-row .text .label{
+    font-size:0.68rem;
+    color:var(--ink-soft);
+    letter-spacing:0.03em;
+    margin-bottom:2px;
+  }
+  .contact-row .text .value{
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--ink);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .contact-row .chev{
+    flex:0 0 auto;
+    color:var(--gold-soft);
+    width:14px;height:14px;
+  }
+
+  button.contact-row{
+    width:100%;
+    text-align:left;
+    cursor:pointer;
+  }
+
+  /* Google review — primary CTA */
+  .review-cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 20px;
+    border:1px solid var(--gold);
+    border-radius:var(--radius);
+    color:var(--ink);
+    font-size:0.88rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+    background:linear-gradient(180deg,#fff, var(--ivory-deep));
+  }
+  .review-cta:active{ background:var(--ivory-deep); }
+  .review-cta svg{ width:16px;height:16px;color:var(--gold); flex:0 0 auto; }
+  .review-sub{
+    text-align:center;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+    letter-spacing:0.01em;
+  }
+
+  /* QR */
+  .qr-block{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:6px 0 4px;
+  }
+  .qr-frame{
+    padding:14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+  }
+  .qr-frame img{
+    display:block;
+    width:150px;
+    height:150px;
+  }
+  .qr-caption{
+    margin-top:12px;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+  }
+
+  /* Footer / appreciation */
+  .footer{
+    margin-top:30px;
+    padding:20px 28px 34px;
+    text-align:center;
+  }
+  .appreciation-link{
+    display:inline-block;
+    font-size:0.74rem;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+  }
+  .appreciation-link:active{ color:var(--ink); }
+
+  .brand-foot{
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:0.82rem;
+    letter-spacing:0.14em;
+    color:var(--gold-soft);
+    margin-top:22px;
+  }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:28px;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--ink);
+    color:var(--ivory);
+    font-size:0.8rem;
+    padding:10px 18px;
+    border-radius:var(--radius);
+    opacity:0;
+    transition:opacity .25s ease, transform .25s ease;
+    pointer-events:none;
+    z-index:10;
+    white-space:nowrap;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+
+  @media (min-width:480px){
+    body{ padding-top:40px; padding-bottom:60px; }
+    .card{ box-shadow:0 30px 70px -30px rgba(30,25,15,0.25); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="photo-wrap">
+    <img src="alessandro-pavesi.jpg" alt="Alessandro Pavesi">
+    <div class="photo-caption">
+      <div class="name">Alessandro Pavesi</div>
+      <div class="role">Luxury Watches &amp; Jewellery — Sales Associate</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="section-label">Contact</div>
+    <div class="contact-list">
+
+      <a class="contact-row" href="tel:+39335172990">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+        </span>
+        <span class="text">
+          <div class="label">Phone</div>
+          <div class="value">+39 335 172 990</div>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <a class="contact-row" href="mailto:alessandro.pavesi@rocca1794.com">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11z"/><path d="M4 6.5l8 6.5 8-6.5"/></svg>
+        </span>
+        <span class="text">
+          <div class="label">Email</div>
+          <div class="value">alessandro.pavesi@rocca1794.com</div>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <a class="contact-row" href="https://wa.me/39335172990" target="_blank" rel="noopener">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/><path d="M8.5 8.8c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.4.2.5.7 1.6.7 1.7.1.1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 1.9 1.1.9 2 1.2 2.4 1.4.3.1.5.1.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.5.7c.2.1.4.2.4.4 0 .2 0 1-.4 1.4-.4.4-1.2.9-2.2.8-1-.1-3.2-.9-4.7-2.3-1.5-1.4-2.4-3.1-2.6-3.6-.2-.5-.9-1.7-.9-2.7 0-1 .5-1.4.7-1.6z"/></svg>
+        </span>
+        <span class="text">
+          <div class="label">WhatsApp</div>
+          <div class="value">Send a message</div>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+
+      <button class="contact-row" id="saveContactBtn">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="1.5"/><circle cx="9" cy="10.2" r="2"/><path d="M6 16c.6-1.7 1.8-2.6 3-2.6s2.4.9 3 2.6"/><path d="M15 9.5h3M15 12.5h3"/></svg>
+        </span>
+        <span class="text">
+          <div class="label">Contact card</div>
+          <div class="value">Save contact</div>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+
+    </div>
+
+    <div class="hairline"></div>
+
+    <div class="section-label">Your experience</div>
+    <a class="review-cta" href="https://share.google/nlYFMZO0XI29Eh1mt" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 4.9 5.3.6-4 3.7 1.1 5.3L12 14.9l-4.6 2.6 1.1-5.3-4-3.7 5.3-.6z"/></svg>
+      Share your experience
+    </a>
+    <div class="review-sub">Your feedback helps me serve every client better.</div>
+
+    <div class="hairline"></div>
+
+    <div class="qr-block">
+      <div class="qr-frame">
+        <img id="qrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=12&qzone=1&data=https%3A%2F%2Fshare.google%2FnlYFMZO0XI29Eh1mt" alt="QR code — scan to connect">
+      </div>
+      <div class="qr-caption">Scan to connect</div>
+    </div>
+
+    <div class="brand-foot">ROCCA 1794</div>
+
+  </div>
+
+  <div class="footer">
+    <a class="appreciation-link" href="https://www.paypal.com/qrcodes/managed/cfa4cd00-18ae-4aad-af05-36354b5644cf?utm_source=consapp_onscreen" target="_blank" rel="noopener">Leave a personal appreciation</a>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Contact saved</div>
+
+<script>
+  const btn = document.getElementById('saveContactBtn');
+  const toast = document.getElementById('toast');
+
+  btn.addEventListener('click', function(){
+    const vcard = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:Pavesi;Alessandro;;;',
+      'FN:Alessandro Pavesi',
+      'ORG:Rocca 1794',
+      'TITLE:Luxury Watches & Jewellery — Sales Associate',
+      'TEL;TYPE=CELL:+39335172990',
+      'EMAIL;TYPE=INTERNET:alessandro.pavesi@rocca1794.com',
+      'END:VCARD'
+    ].join('\r\n');
+
+    const blob = new Blob([vcard], { type: 'text/vcard' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Alessandro Pavesi.vcf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  });
+
+  /*
+    QR CODE NOTE:
+    The QR currently points to the Google Review link, since this page
+    has no permanent public URL yet. Once this file is published online
+    (e.g. rocca1794.com/alessandro-pavesi or a subdomain), replace the
+    "data=" value in #qrImg's src above with that URL, URL-encoded, so
+    the QR opens the digital business card itself.
+  */
+</script>
+
+</body>
+</html>
